@@ -1,0 +1,14 @@
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        arr = [[0]*n]*m
+        arr[m-2][n-1]=1
+        arr[m-1][n-2]=1
+        for i in range(m-1,-1,-1):
+            for j in range(n-1,-1,-1):
+                if(i==(m-1)):
+                    arr[i][j]=1
+                elif(j==(n-1)):
+                    arr[i][j]=1
+                else:
+                    arr[i][j]=arr[i+1][j]+arr[i][j+1]
+        return arr[0][0]
