@@ -1,0 +1,46 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        mem={}
+        box=0
+        for i in range(0,9):
+            for j in range(0,9):
+                if(i>-1 and i<3 and j>-1 and j<3):
+                    box=1
+                elif(i>-1 and i<3 and j>2 and j<6):
+                    box=2
+                elif(i>-1 and i<3 and j>5 and j<9):
+                    box=3
+                elif(i>2 and i<6 and j>-1 and j<3):
+                    box=4
+                elif(i>2 and i<6 and j>2 and j<6):
+                    box=5
+                elif(i>2 and i<6 and j>5 and j<9):
+                    box=6
+                elif(i>5 and i<9 and j>-1 and j<3):
+                    box=7
+                elif(i>5 and i<9 and j>2 and j<6):
+                    box=8
+                elif(i>5 and i<9 and j>5 and j<9):
+                    box=9
+                if(board[i][j]!='.'):
+                    x=[]
+                    y=[]
+                    a=board[i][j]
+                    if(a not in mem):
+                        y.append(i)
+                        y.append(j)
+                        y.append(box)
+                        x.append(y)
+
+                        mem[a]=x
+                    else:
+                        y=mem[a]
+                        for k in range(len(y)):
+                            if(i==y[k][0]):
+                                return False
+                            elif(j==y[k][1]):
+                                return False
+                            elif(box==y[k][2]):
+                                return False
+                            mem[a].append([i,j,box])
+        return True
