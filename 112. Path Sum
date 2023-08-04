@@ -1,0 +1,13 @@
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        out=[]
+        def tots(root,targ):
+            if(not root):
+                return
+            targ-=root.val
+            if(not (root.left or root.right) and targ==0):
+                return True
+            #print(targ)
+            
+            return (tots(root.left,targ) or tots(root.right,targ))
+        return tots(root,targetSum)
