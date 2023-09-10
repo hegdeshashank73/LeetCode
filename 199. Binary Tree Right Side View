@@ -1,0 +1,16 @@
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        out=[]
+        height=0
+        maxheight=-1
+        def dfs(root,height):
+            nonlocal maxheight
+            if(root==None):
+                return 0
+            if(height>maxheight):
+                out.append(root.val)
+                maxheight=height
+            height+=1
+            return max(maxheight,dfs(root.right,height),dfs(root.left,height))
+        dfs(root,height)
+        return out
