@@ -1,0 +1,17 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        i,j=0,0
+        s=list(s)
+        while(j!=len(s)):
+            if(s[j]==" "):
+                s[i:j]=s[i:j][::-1]
+                #print(s)
+                j+=1
+                i=j
+            if(j==len(s)-1):
+                s[i:]=s[i:][::-1]
+                j+=1
+                
+            else:
+                j+=1
+        return ''.join(s)
