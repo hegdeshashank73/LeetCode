@@ -1,0 +1,41 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        rows=[]
+        i,j=0,0
+        turn=0
+        while(i<len(s)):
+            if(j==0):
+                if(i>len(s)-1):
+                    return ''.join(rows)
+                while(i<numRows and i<len(s) ):
+
+                    rows.append(s[i])
+                    i+=1
+                j+=1
+                
+                print(numRows)
+            if(turn==0):
+                if(i>len(s)-1):
+                    return ''.join(rows)
+                print(rows)
+                k=numRows-2
+                while(k>0 and i<len(s)):
+                    
+                    rows[k]+=s[i]
+                    i+=1
+                    k-=1
+                    j+=1
+                turn=1
+            if(turn):
+                if(i>len(s)-1):
+                    return ''.join(rows)
+                k=0
+                while(k<numRows and i<len(s)):
+
+                    rows[k]+=s[i]
+                    i+=1
+                    k+=1
+                j+=1
+                turn=0
+        return ''.join(rows)
+            
