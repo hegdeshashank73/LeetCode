@@ -1,0 +1,17 @@
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        cost.append(0)
+        min1=float("inf")
+        min2=0
+        dp={}
+        def dfs(index,min1,min2):
+            if(index==-1 or index==-2):
+                min1=min(min2,min1)
+                return min1
+            if(index in dp):
+                min2=dp[index]
+            else:
+                min2=cost[index]+min(dfs(index-1,min1,min2),dfs(index-2,min1,min2))
+                dp[index]=min2
+            return min2
+        return dfs(len(cost)-1,min1,min2)
