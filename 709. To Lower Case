@@ -1,0 +1,8 @@
+class Solution:
+    def toLowerCase(self, s: str) -> str:
+        
+        for i in range(len(s)):
+            if(ord(s[i])<=90 and ord(s[i])>=65):
+                #print(chr(97+ord(s[i])-65))
+                s=s.replace(s[i],chr(97+ord(s[i])-65))
+        return s
