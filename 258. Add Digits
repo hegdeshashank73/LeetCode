@@ -1,0 +1,11 @@
+class Solution:
+    def addDigits(self, num: int) -> int:
+        def sumofdigits(num):
+            out=0
+            while(num!=0):
+                out+=num%10
+                num=num//10
+            return out
+        while(num//10!=0):
+            num=sumofdigits(num)
+        return num
